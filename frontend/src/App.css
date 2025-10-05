@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Map shell */
+.map-container { height: 100vh; width: 100%; position: relative; }
+
+/* Sidebar */
+.sidebar{
+  position:absolute; top:10px; left:10px; background:white; padding:6px 10px;
+  border-radius:6px; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;
+  z-index:1;
+}
+.search{ position:absolute; top:10px; left:10px; background-color:black; }
+.reset-button{ position:absolute; top:60px; left:10px; z-index:1; }
+
+.map-overlay-style{
+  position:absolute; width:420px; top:20px; left:20px; padding:15px;
+  height:92vh; display:flex; flex-direction:column; background:#fff; border-radius:10px;
+}
+.map-overlay-inner-style{
+  background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.1); border-radius:3px; padding:10px; margin-bottom:10px;
+}
+
+/* ---------- Chatbot ---------- */
+.chatbot{ position:fixed; right:20px; bottom:20px; z-index:9999; }
+
+/* Round toggle with image */
+.chatbot-toggle{
+  width:88px; height:88px; border:0; border-radius:999px; background:#111827; color:#fff;
+  display:grid; place-items:center; cursor:pointer; box-shadow:0 12px 28px rgba(0,0,0,.22);
+}
+
+/* Bubble sits to the LEFT of the toggle */
+.chatbot-bubble{
+  position:absolute;
+  right:88px;               /* distance from button */
+  bottom:10px;
+  width:clamp(340px, 42vw, 560px);   /* responsive but never too wide */
+  max-height:70vh;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+
+  padding:16px 48px 16px 16px;
+  border-radius:16px;
+
+  background:linear-gradient(180deg,#ffffff,#f7f7fb);
+  border:1px solid rgba(17,24,39,.08);
+  color:#0f172a;
+
+  box-shadow:0 24px 48px rgba(0,0,0,.22);
+  backdrop-filter:saturate(180%) blur(4px);
+
+  animation:bubble-in 160ms cubic-bezier(.2,.7,.3,1),
+            bubble-bounce 700ms ease-out 140ms both;
+}
+
+/* Tail pointer */
+.chatbot-bubble::after{
+  content:"";
+  position:absolute; right:-8px; bottom:20px;
+  border-left:10px solid #ffffff; border-top:10px solid transparent; border-bottom:10px solid transparent;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.08));
+}
+
+/* Close button inside bubble */
+.bubble-close{
+  position:absolute; right:10px; top:8px; border:0; background:transparent;
+  color:#64748b; font-size:20px; line-height:1; cursor:pointer;
+}
+.bubble-close:hover{ color:#0f172a; }
+
+/* Bubble text & simple typographic polish */
+.bubble-content{
+  font-size:16px;           /* bigger text */
+  line-height:1.6;
+  letter-spacing:.006em;
+}
+.bubble-content strong{ font-weight:700; }
+.bubble-content em{ font-style:italic; }
+.bubble-content code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background:#f2f4f8; border:1px solid #e5e7eb; border-radius:6px; padding:.05rem .35rem;
+}
+.bubble-content p + p{ margin-top:.6rem; }
+
+/* Animations */
+@keyframes bubble-in { from{ transform:translateY(6px) scale(.98); opacity:0 } to{ transform:translateY(0) scale(1); opacity:1 } }
+@keyframes bubble-bounce { 0%{ transform:translateY(0) } 40%{ transform:translateY(-3px) } 100%{ transform:translateY(0) } }
+
+
+
+.images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-datepicker {
+  font-family: unset;
+  font-size: 0.9rem;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block;
+}
+
+.react-datepicker__input-container {
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  border-color: hsl(0,0%,80%);
+}
+
+.react-datepicker__input-container:hover {
+  border-color: hsl(0,0%,70%);
+}
+.react-datepicker__input-container:focus-within {
+  z-index: 1;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 1px #3182ce;
+}
+
+.react-datepicker__input-container > input {
+  width: 100%;
+  height: 100%;
+  outline: 0;
+}
+
+.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+  right: 90px;
+}
+
+.react-datepicker__navigation--previous {
+  border-right-color: #cbd5e0;
+}
+
+.react-datepicker__navigation--previous:hover {
+  border-right-color: #a0aec0;
+}
+
+.react-datepicker__navigation--next {
+  border-left-color: #cbd5e0;
+
+}
+
+.react-datepicker__navigation--next:hover {
+  border-left-color: #a0aec0;
+}
+
+.react-datepicker__header {
+  background: #f7fafc;
+}
+
+.react-datepicker__header,
+.react-datepicker__time-container {
+  border-color: #E2E8F0;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item {
+  margin: 0 1px 0 0;
+  height: auto;
+  padding: 7px 10px;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover {
+  background: #edf2f7;
+}
+
+.react-datepicker__day:hover {
+  background: #edf2f7;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+  background: #3182ce;
+  font-weight: normal;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected:hover {
+  background: #2a69ac;
+}
+
+.react-datepicker__close-icon::after {
+  background-color: unset;
+  border-radius: unset;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: hsl(0,0%,80%);
+  height: 20px;
+  width: 20px;
+}
+
+.react-datepicker__close-icon::after:hover {
+  color: hsl(0,0%,70%)
+}
+
+/* Full-screen “space” overlay */
+.snoopy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background:
+    radial-gradient(1200px 700px at 80% 10%, #0b1536 0%, transparent 60%),
+    linear-gradient(#050815, #0b1026);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;
+}
+
+/* Star layers */
+.stars, .twinkle {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.stars {
+  background:
+    radial-gradient(2px 2px at 20px 30px, #ffffff 60%, transparent 61%) repeat,
+    radial-gradient(1.5px 1.5px at 100px 80px, #cdd7ff 60%, transparent 61%) repeat,
+    radial-gradient(1.5px 1.5px at 180px 140px, #a3b0ff 60%, transparent 61%) repeat;
+  background-size: 200px 200px, 240px 240px, 300px 300px;
+  opacity: 0.6;
+  animation: drift 120s linear infinite;
+}
+.twinkle {
+  background:
+    radial-gradient(1.2px 1.2px at 60px 50px, #fff 60%, transparent 61%) repeat,
+    radial-gradient(1.2px 1.2px at 160px 130px, #fff 60%, transparent 61%) repeat;
+  background-size: 220px 220px, 280px 280px;
+  animation: twinkle 2.2s ease-in-out infinite alternate;
+  opacity: 0.35;
+}
+
+/* Loader content */
+.loader { text-align: center; }
+.animation-container {
+  position: relative;
+  width: 16rem; height: 16rem;
+  margin: 0 auto 1rem;
+}
+@media (min-width: 768px) {
+  .animation-container { width: 20rem; height: 20rem; }
+}
+.frame { width: 100%; height: 100%; object-fit: contain; }
+
+.loading-text {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  color: #cbd5e1; font-size: 1.05rem;
+}
+.spinner { width: 32px; height: 32px; animation: spin 1s linear infinite; }
+.ring { fill: none; stroke: rgba(255,255,255,.25); stroke-width: 4; }
+.arc { fill: currentColor; opacity: .85; }
+
+/* Animations */
+.fade-in { animation: fadeIn .9s ease both; }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes spin { to { transform: rotate(360deg) } }
+@keyframes drift {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-200px, -120px, 0); }
+}
+@keyframes twinkle {
+  from { opacity: .2; filter: drop-shadow(0 0 0px rgba(255,255,255,.0)); }
+  to   { opacity: .55; filter: drop-shadow(0 0 6px rgba(255,255,255,.25)); }
+}
+
+/* Full-screen spacey backdrop */
+.snoopy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background:
+    radial-gradient(1200px 700px at 80% 10%, #0b1536 0%, transparent 60%),
+    linear-gradient(#050815, #0b1026);
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity var(--fadeMs, 450ms) ease,
+    transform var(--fadeMs, 450ms) ease;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;
+}
+.snoopy-overlay.closing {
+  opacity: 0;
+  transform: translateY(8px) scale(.98);
+  pointer-events: none;
+}
+
+/* Star layers */
+.stars, .twinkle { position: absolute; inset: 0; pointer-events: none; }
+.stars {
+  background:
+    radial-gradient(2px 2px at 20px 30px, #ffffff 60%, transparent 61%) repeat,
+    radial-gradient(1.5px 1.5px at 100px 80px, #cdd7ff 60%, transparent 61%) repeat,
+    radial-gradient(1.5px 1.5px at 180px 140px, #a3b0ff 60%, transparent 61%) repeat;
+  background-size: 200px 200px, 240px 240px, 300px 300px;
+  opacity: 0.6;
+  animation: drift 120s linear infinite;
+}
+.twinkle {
+  background:
+    radial-gradient(1.2px 1.2px at 60px 50px, #fff 60%, transparent 61%) repeat,
+    radial-gradient(1.2px 1.2px at 160px 130px, #fff 60%, transparent 61%) repeat;
+  background-size: 220px 220px, 280px 280px;
+  animation: twinkle 2.2s ease-in-out infinite alternate;
+  opacity: 0.35;
+}
+
+/* Loader content */
+.loader { text-align: center; }
+.animation-container { position: relative; width: 16rem; height: 16rem; margin: 0 auto 1rem; }
+@media (min-width: 768px) { .animation-container { width: 20rem; height: 20rem; } }
+.frame { width: 100%; height: 100%; object-fit: contain; }
+.loading-text { display: flex; flex-direction: column; align-items: center; gap: .5rem; color: #cbd5e1; font-size: 1.05rem; }
+.spinner { width: 32px; height: 32px; animation: spin 1s linear infinite; }
+.ring { fill: none; stroke: rgba(255,255,255,.25); stroke-width: 4; }
+.arc { fill: currentColor; opacity: .85; }
+
+/* Extras */
+.fade-in { animation: fadeIn .9s ease both; }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes spin { to { transform: rotate(360deg) } }
+@keyframes drift { from { transform: translate3d(0,0,0) } to { transform: translate3d(-200px,-120px,0) } }
+@keyframes twinkle {
+  from { opacity: .2; filter: drop-shadow(0 0 0 rgba(255,255,255,0)) }
+  to   { opacity: .55; filter: drop-shadow(0 0 6px rgba(255,255,255,.25)) }
+}
+

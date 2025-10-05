@@ -1,0 +1,6 @@
+Griffith Observatory: {lat: 34.11825, lon: -118.30035, date: '2025-11-21'}
+Bryant Park: {lat: 40.753544, lon: -73.982956, date: '2026-03-07'}
+83 Sopa-ro, Jung District, Seoul, South Korea December 30th 2025
+London 11/28/2025
+
+
