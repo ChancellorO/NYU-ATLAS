@@ -1,16 +1,41 @@
-# React + Vite
+# NYU-ATLAS — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Minimal instructions to run the frontend locally.
 
-Currently, two official plugins are available:
+Prerequisites
+- Node.js (recommended v18+)
+- npm or pnpm
+- Mapbox account to get a Mapbox token
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Setup
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## React Compiler
+2. Create a .env file in the project root (or .env.local) and supply your values:
+   ```env
+   VITE_MAPBOX_TOKEN=pk.your_mapbox_public_token_here
+   VITE_API_URL=https://your-backend.example.com/analyze
+   ```
+   - VITE_MAPBOX_TOKEN is required for Mapbox maps to render.
+   - VITE_API_URL should point to the backend analyze endpoint used by the app. If omitted, the app will use the default fallback URL inside the code.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Restart the dev server after changing .env.
 
-## Expanding the ESLint configuration
+Run (development)
+```bash
+npm run dev
+```
+Open the URL printed by Vite (usually http://localhost:5173).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Build (production)
+```bash
+npm run build
+npm run preview   # optional, to preview the production build locally
+```
+
+Notes
+- The app reads the Mapbox token from import.meta.env.VITE_MAPBOX_TOKEN.
+- The backend analyze endpoint is read from VITE_API_URL (or can be supplied via the Map component props).
+- If maps or date-picker behavior appear incorrect, confirm the token and backend URL are valid and that the dev server was restarted after editing .env.
